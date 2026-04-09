@@ -9,9 +9,9 @@ export class EnquiryService {
   constructor(
     private prisma: PrismaService,
     private leadService: LeadService, // 🔥 INJECT
-  ) {}
+  ) { }
 
-  
+
   async create(dto: CreateEnquiryDto) {
     return this.prisma.enquiry.create({
       data: {
@@ -20,7 +20,7 @@ export class EnquiryService {
     });
   }
 
-  
+
   async findAll() {
     return this.prisma.enquiry.findMany({
       where: { isDeleted: false },
@@ -30,7 +30,7 @@ export class EnquiryService {
     });
   }
 
-  
+
   async findOne(id: string) {
     const enquiry = await this.prisma.enquiry.findUnique({
       where: { id },
@@ -46,7 +46,7 @@ export class EnquiryService {
     return enquiry;
   }
 
-  
+
   async update(id: string, dto: UpdateEnquiryDto) {
     return this.prisma.enquiry.update({
       where: { id },
@@ -56,7 +56,7 @@ export class EnquiryService {
     });
   }
 
-  
+
   async remove(id: string) {
     return this.prisma.enquiry.update({
       where: { id },
@@ -66,7 +66,7 @@ export class EnquiryService {
     });
   }
 
-  
+
   async convertToLead(id: string) {
     return this.leadService.convertFromEnquiry(id);
   }

@@ -20,7 +20,7 @@ import { RolesGuard } from '../comman/guards/roles.guard';
 @UseGuards(JwtAuthGuard, RolesGuard)
 @Controller('enquiry')
 export class EnquiryController {
-  constructor(private readonly enquiryService: EnquiryService) {}
+  constructor(private readonly enquiryService: EnquiryService) { }
 
   // 🔹 Create enquiry (PUBLIC)
   @Post()
@@ -35,6 +35,8 @@ export class EnquiryController {
   findAll() {
     return this.enquiryService.findAll();
   }
+
+
 
   // 🔹 Get single enquiry
   @Get(':id')
@@ -57,10 +59,12 @@ export class EnquiryController {
     return this.enquiryService.remove(id);
   }
 
-  
+
   @Post(':id/convert-to-lead')
   @Roles(Role.SUPER_ADMIN, Role.ADMIN, Role.USER)
   convertToLead(@Param('id') id: string) {
     return this.enquiryService.convertToLead(id);
   }
+
+
 }

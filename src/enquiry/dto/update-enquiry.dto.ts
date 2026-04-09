@@ -4,5 +4,5 @@ export class UpdateEnquiryDto {
   phone?: string;
   description?: string;
   serviceId?: string;
-  status?: 'OPEN' | 'IN_PROGRESS' | 'CLOSED';
+  status?: 'NEW' | 'IN_PROGRESS' | 'CLOSED';
 }

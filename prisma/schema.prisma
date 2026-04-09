@@ -103,7 +103,7 @@ model Enquiry {
   customerId String?
   customer   Customer? @relation(fields: [customerId], references: [id])
 
-  status EnquiryStatus @default(OPEN)
+  status EnquiryStatus @default(NEW)
 
   isDeleted Boolean @default(false)
 
@@ -140,7 +140,7 @@ model Lead {
 // ENUMS
 // ------------------------------
 enum EnquiryStatus {
-  OPEN
+  NEW
   IN_PROGRESS
   CLOSED
 }
